@@ -1,0 +1,41 @@
+---
+const projects = [
+  {
+    title: 'Project Alpha',
+    description: 'A modern web application for creative professionals',
+    year: '2026',
+  },
+  {
+    title: 'Project Beta',
+    description: 'Mobile-first design system and component library',
+    year: '2025',
+  },
+  {
+    title: 'Project Gamma',
+    description: 'E-commerce platform with focus on sustainability',
+    year: '2025',
+  },
+  {
+    title: 'Project Delta',
+    description: 'Interactive data visualization dashboard',
+    year: '2024',
+  },
+];
+---
+
+<section id="work" class="px-6 py-20 md:py-24 border-t border-border">
+  <div class="max-w-4xl w-full mx-auto">
+    <h2 class="mb-12">Selected Work</h2>
+    <div class="space-y-12">
+      {projects.map((project) => (
+        <div class="group cursor-pointer">
+          <div class="flex justify-between items-baseline mb-2">
+            <h3 class="group-hover:text-muted-foreground transition-colors">{project.title}</h3>
+            <span class="text-muted-foreground text-sm">{project.year}</span>
+          </div>
+          <p class="text-muted-foreground">{project.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

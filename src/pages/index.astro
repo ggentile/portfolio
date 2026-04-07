@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Work from '../components/Work.astro';
+import Blog from '../components/Blog.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <div class="flex w-full min-h-screen relative bg-background">
+    <!-- Sidebar (desktop) -->
+    <div class="hidden md:flex w-1/4 fixed h-screen flex-col justify-between border-r border-border pl-8 pr-4 py-12">
+      <Navigation />
+      <Footer />
+    </div>
+
+    <!-- Main content -->
+    <div class="w-full md:w-3/4 md:ml-[25%] flex flex-col">
+      <!-- Mobile nav -->
+      <div class="md:hidden p-6 border-b border-border">
+        <Navigation />
+      </div>
+
+      <Hero />
+      <About />
+      <Work />
+      <Blog />
+
+      <!-- Mobile footer -->
+      <div class="md:hidden p-6 mt-12 border-t border-border">
+        <Footer />
+      </div>
+    </div>
+  </div>
+</Layout>
