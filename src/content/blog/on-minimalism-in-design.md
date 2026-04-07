@@ -1,6 +1,6 @@
 ---
 title: "On Minimalism in Design"
-date: 2026-03-01
+date: 2026-04-01
 excerpt: "Exploring the principles of minimal design and how less can truly be more in digital experiences."
 ---
 

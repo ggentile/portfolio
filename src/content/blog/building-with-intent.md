@@ -1,6 +1,6 @@
 ---
 title: "Building with Intent"
-date: 2026-02-01
+date: 2026-04-01
 excerpt: "Why every design decision should have a purpose and how to maintain focus in your creative work."
 ---
 
