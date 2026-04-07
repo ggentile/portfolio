@@ -15,16 +15,15 @@ const isHome = currentPath === '/';
       </a>
 
       <button
-        id="theme-toggle"
-        class="p-2 rounded-full hover:bg-muted transition-colors text-foreground"
+        class="theme-toggle p-2 rounded-full hover:bg-muted transition-colors text-foreground"
         aria-label="Toggle dark mode"
       >
         <!-- Sun icon (shown in dark mode) -->
-        <svg id="icon-sun" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="icon-sun w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
         </svg>
         <!-- Moon icon (shown in light mode) -->
-        <svg id="icon-moon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="icon-moon w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
         </svg>
       </button>
@@ -51,26 +50,23 @@ const isHome = currentPath === '/';
 
 <script>
   function initThemeToggle() {
-    const btn = document.getElementById('theme-toggle');
-    const sun = document.getElementById('icon-sun');
-    const moon = document.getElementById('icon-moon');
-
     function updateIcons() {
       const isDark = document.documentElement.classList.contains('dark');
-      sun?.classList.toggle('hidden', !isDark);
-      moon?.classList.toggle('hidden', isDark);
+      document.querySelectorAll('.icon-sun').forEach(el => el.classList.toggle('hidden', !isDark));
+      document.querySelectorAll('.icon-moon').forEach(el => el.classList.toggle('hidden', isDark));
     }
 
     updateIcons();
 
-    if (!btn || btn.dataset.themeBound === 'true') return;
-
-    btn.dataset.themeBound = 'true';
-    btn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      document.documentElement.classList.toggle('dark', !isDark);
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
-      updateIcons();
+    document.querySelectorAll<HTMLElement>('.theme-toggle').forEach(btn => {
+      if (btn.dataset.themeBound === 'true') return;
+      btn.dataset.themeBound = 'true';
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.documentElement.classList.toggle('dark', !isDark);
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        updateIcons();
+      });
     });
   }
 
